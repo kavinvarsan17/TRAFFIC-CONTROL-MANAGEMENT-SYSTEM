@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Traffic Control System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="admin-page">
+    <!-- Header -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="traffic-icon">🚦</span>
+                <h1>Traffic Control Dashboard</h1>
+            </div>
+            <div class="user-info">
+                <span class="user-name" id="userName">Admin User</span>
+                <button class="btn-logout" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <span class="icon">📊</span> Dashboard
+                </a>
+                <a href="#" class="nav-item" data-section="signals">
+                    <span class="icon">🚦</span> Traffic Signals
+                </a>
+                <a href="#" class="nav-item" data-section="emergency">
+                    <span class="icon">🚨</span> Emergency Control
+                </a>
+                <a href="#" class="nav-item" data-section="analytics">
+                    <span class="icon">📈</span> Analytics
+                </a>
+                <a href="#" class="nav-item" data-section="settings">
+                    <span class="icon">⚙️</span> Settings
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <h2>System Overview</h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🚗</div>
+                        <div class="stat-info">
+                            <h3>Total Vehicles</h3>
+                            <p class="stat-value" id="totalVehicles">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">🚦</div>
+                        <div class="stat-info">
+                            <h3>Active Signals</h3>
+                            <p class="stat-value" id="activeSignals">4</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">🚨</div>
+                        <div class="stat-info">
+                            <h3>Emergency Alerts</h3>
+                            <p class="stat-value" id="emergencyAlerts">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-info">
+                            <h3>Avg Wait Time</h3>
+                            <p class="stat-value" id="avgWaitTime">12s</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="real-time-status">
+                    <h3>Real-Time Traffic Status</h3>
+                    <div id="trafficStatus" class="traffic-grid"></div>
+                </div>
+            </section>
+
+            <!-- Traffic Signals Section -->
+            <section id="signals" class="content-section">
+                <h2>Traffic Signal Management</h2>
+
+                <div class="signals-control">
+                    <div class="signal-card" data-direction="North">
+                        <h3>North Signal</h3>
+                        <div class="signal-visual">
+                            <div class="light red active"></div>
+                            <div class="light yellow"></div>
+                            <div class="light green"></div>
+                        </div>
+                        <div class="signal-info">
+                            <p>Vehicle Count: <span class="vehicle-count">0</span></p>
+                            <p>Status: <span class="status-text">RED</span></p>
+                            <p>Timer: <span class="timer">15s</span></p>
+                        </div>
+                        <div class="signal-controls">
+                            <button class="btn-control btn-green">Force Green</button>
+                            <button class="btn-control btn-red">Force Red</button>
+                        </div>
+                    </div>
+
+                    <div class="signal-card" data-direction="East">
+                        <h3>East Signal</h3>
+                        <div class="signal-visual">
+                            <div class="light red active"></div>
+                            <div class="light yellow"></div>
+                            <div class="light green"></div>
+                        </div>
+                        <div class="signal-info">
+                            <p>Vehicle Count: <span class="vehicle-count">0</span></p>
+                            <p>Status: <span class="status-text">RED</span></p>
+                            <p>Timer: <span class="timer">15s</span></p>
+                        </div>
+                        <div class="signal-controls">
+                            <button class="btn-control btn-green">Force Green</button>
+                            <button class="btn-control btn-red">Force Red</button>
+                        </div>
+                    </div>
+
+                    <div class="signal-card" data-direction="South">
+                        <h3>South Signal</h3>
+                        <div class="signal-visual">
+                            <div class="light red active"></div>
+                            <div class="light yellow"></div>
+                            <div class="light green"></div>
+                        </div>
+                        <div class="signal-info">
+                            <p>Vehicle Count: <span class="vehicle-count">0</span></p>
+                            <p>Status: <span class="status-text">RED</span></p>
+                            <p>Timer: <span class="timer">15s</span></p>
+                        </div>
+                        <div class="signal-controls">
+                            <button class="btn-control btn-green">Force Green</button>
+                            <button class="btn-control btn-red">Force Red</button>
+                        </div>
+                    </div>
+
+                    <div class="signal-card" data-direction="West">
+                        <h3>West Signal</h3>
+                        <div class="signal-visual">
+                            <div class="light red active"></div>
+                            <div class="light yellow"></div>
+                            <div class="light green"></div>
+                        </div>
+                        <div class="signal-info">
+                            <p>Vehicle Count: <span class="vehicle-count">0</span></p>
+                            <p>Status: <span class="status-text">RED</span></p>
+                            <p>Timer: <span class="timer">15s</span></p>
+                        </div>
+                        <div class="signal-controls">
+                            <button class="btn-control btn-green">Force Green</button>
+                            <button class="btn-control btn-red">Force Red</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Emergency Control Section -->
+            <section id="emergency" class="content-section">
+                <h2>Emergency Vehicle Control</h2>
+
+                <div class="emergency-panel">
+                    <div class="emergency-status">
+                        <h3>Emergency Status</h3>
+                        <div class="status-indicator" id="emergencyStatus">
+                            <span class="status-dot"></span>
+                            <span class="status-label">No Emergency</span>
+                        </div>
+                    </div>
+
+                    <div class="emergency-actions">
+                        <h3>Quick Actions</h3>
+                        <button class="btn-emergency" id="simulateEmergency">
+                            🚨 Simulate Emergency
+                        </button>
+                        <button class="btn-emergency secondary" id="clearEmergency">
+                            Clear Emergency
+                        </button>
+                    </div>
+
+                    <div class="emergency-log">
+                        <h3>Emergency Log</h3>
+                        <div id="emergencyLogContent" class="log-content">
+                            <p class="log-entry">System initialized - No emergencies</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics" class="content-section">
+                <h2>Traffic Analytics</h2>
+
+                <div class="analytics-grid">
+                    <div class="chart-card">
+                        <h3>Traffic Flow by Direction</h3>
+                        <div class="chart-placeholder">
+                            <canvas id="flowChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>Peak Hours Analysis</h3>
+                        <div class="chart-placeholder">
+                            <canvas id="peakChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analytics-table">
+                    <h3>Recent Activity</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Signal</th>
+                                <th>Vehicles</th>
+                                <th>Action</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activityTableBody">
+                            <tr>
+                                <td>--:--:--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="content-section">
+                <h2>System Settings</h2>
+
+                <div class="settings-panel">
+                    <div class="settings-group">
+                        <h3>Signal Timing Configuration</h3>
+                        <div class="setting-item">
+                            <label for="greenTimeHigh">Green Time (High Traffic):</label>
+                            <input type="number" id="greenTimeHigh" value="20" min="5" max="60">
+                            <span>seconds</span>
+                        </div>
+                        <div class="setting-item">
+                            <label for="greenTimeMedium">Green Time (Medium Traffic):</label>
+                            <input type="number" id="greenTimeMedium" value="15" min="5" max="60">
+                            <span>seconds</span>
+                        </div>
+                        <div class="setting-item">
+                            <label for="greenTimeLow">Green Time (Low Traffic):</label>
+                            <input type="number" id="greenTimeLow" value="10" min="5" max="60">
+                            <span>seconds</span>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>Traffic Density Thresholds</h3>
+                        <div class="setting-item">
+                            <label for="highThreshold">High Traffic Threshold:</label>
+                            <input type="number" id="highThreshold" value="15" min="1" max="50">
+                            <span>vehicles</span>
+                        </div>
+                        <div class="setting-item">
+                            <label for="mediumThreshold">Medium Traffic Threshold:</label>
+                            <input type="number" id="mediumThreshold" value="8" min="1" max="50">
+                            <span>vehicles</span>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>System Preferences</h3>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="autoMode" checked>
+                                Enable Automatic Mode
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="soundAlerts" checked>
+                                Sound Alerts for Emergencies
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="notifications" checked>
+                                Enable Notifications
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="btn-save" id="saveSettings">Save Settings</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
